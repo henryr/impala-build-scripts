@@ -19,7 +19,7 @@ set +e
 # Make this verbose.
 set -x
 
-export IMPALA_HOME=$WORKSPACE/repos/Impala
+export IMPALA_HOME=$WORKSPACE/repos/impala
 export IMPALA_AUX_TEST_HOME=
 export IMPALA_BUILD_SCRIPTS_HOME=${WORKSPACE}/repos/impala-build-scripts/
 export IMPALA_LZO=$WORKSPACE/repos/Impala-lzo
