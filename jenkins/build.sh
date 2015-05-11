@@ -2,7 +2,7 @@
 # This script builds Impala and runs all tests.
 
 # Set up common environment
-source ${WORKSPACE}/repos/impala-jenkins-scripts/jenkins/jenkins-preamble.sh
+source ${WORKSPACE}/repos/impala-build-scripts/jenkins/jenkins-preamble.sh
 
 # Enable debug logging in Jenkins.
 # TODO: Look into removing this if it does not have much value.

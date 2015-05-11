@@ -21,7 +21,7 @@ set -x
 
 export IMPALA_HOME=$WORKSPACE/repos/Impala
 export IMPALA_AUX_TEST_HOME=
-export IMPALA_BUILD_SCRIPTS_HOME=${WORKSPACE}/repos/impala-jenkins-scripts/
+export IMPALA_BUILD_SCRIPTS_HOME=${WORKSPACE}/repos/impala-build-scripts/
 export IMPALA_LZO=$WORKSPACE/repos/Impala-lzo
 export HADOOP_LZO=$WORKSPACE/repos/hadoop-lzo
 export TARGET_FILESYSTEM=${TARGET_FILESYSTEM-"hdfs"}
