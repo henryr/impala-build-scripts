@@ -12,7 +12,7 @@ echo "**************************************************************************
 
 echo ">>> Setting up Impala Jenkins environment..."
 echo ">>> Mounting toolchain"
-. /mnt/toolchain/toolchain.sh # Sets, among other things, THRIFT_HOME
+. /opt/toolchain/toolchain.sh # Sets, among other things, THRIFT_HOME
 
 # Don't exit automatically if any pipeline command returns non-0
 set +e
