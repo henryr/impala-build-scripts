@@ -132,17 +132,17 @@ DOWNLOAD_SNAPSHOT_ARGS+=("--clean")
 # location. If a snapshot exists that's different from the one we want to download, delete
 # it.
 pushd ${IMPALA_BUILD_SCRIPTS_HOME}/jenkins
-if [[ "${SKIP_FULL_DATA_LOAD}" = "true" ]]; then
-  if ! ./download-latest-snapshot.py ${DOWNLOAD_SNAPSHOT_ARGS[@]}; then
+#if [[ "${SKIP_FULL_DATA_LOAD}" = "true" ]]; then
+if ! ./download-latest-snapshot.py ${DOWNLOAD_SNAPSHOT_ARGS[@]}; then
     echo "Unable to download snapshots, aborting build"
     exit 1
-  fi
 fi
+#fi
 popd
 
 # Find the snapshot (may be empty if one was not downloaded)
 export IMPALA_SNAPSHOT_FILE=\
-`find $WORKSPACE/testdata/test-warehouse-SNAPSHOT/ -name test-warehouse-*-SNAPSHOT.tar.gz`
+`find $WORKSPACE/testdata/test-warehouse-SNAPSHOT/ -name public-snapshot.tar.gz`
 # Find the metastore snapshot (maybe empty if one was not downloaded)
 export METASTORE_SNAPSHOT_FILE=\
 `find ${METASTORE_SNAPSHOT_DIR}/ -name hive_impala_dump*.txt`
