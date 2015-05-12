@@ -37,20 +37,20 @@ def get_last_stable_build_num(jenkins_job_url):
 
 def download_hdfs_snapshot(config, clean):
   # Get the Jenkins url for the latest snapshot.
-  file_name = HDFS_SNAPSHOT_FILE_TEMPLATE % (CDH_MAJOR_VERSION, config['last_stable'])
+  # file_name = HDFS_SNAPSHOT_FILE_TEMPLATE % (CDH_MAJOR_VERSION, config['last_stable'])
   snapshot_dir = config['snapshot_dir']
   # url = "%s/lastStableBuild/artifact/testdata/test-warehouse-SNAPSHOT/%s"\
   #     % (config['url'], file_name)
   url = "https://s3-us-west-1.amazonaws.com/cdh5-snapshots/public-snapshot.tar.gz"
-  if clean:
-    # List the snapshots in the download dir (if any). If a snapshot in different from the
-    # one we're trying to download, delete it.
-    if os.path.isdir(snapshot_dir):
-      different_snapshots = filter(lambda x: re.match(HDFS_SNAPSHOT_REGEX, x) and\
-          x != file_name, os.listdir(snapshot_dir))
-      for different_snapshot in different_snapshots:
-        LOG.info("Removing older snapshot: %s" % different_snapshot)
-        os.system("rm -f %s/%s" % (snapshot_dir, different_snapshot))
+  # if clean:
+  #   # List the snapshots in the download dir (if any). If a snapshot in different from the
+  #   # one we're trying to download, delete it.
+  #   if os.path.isdir(snapshot_dir):
+  #     different_snapshots = filter(lambda x: re.match(HDFS_SNAPSHOT_REGEX, x) and\
+  #         x != file_name, os.listdir(snapshot_dir))
+  #     for different_snapshot in different_snapshots:
+  #       LOG.info("Removing older snapshot: %s" % different_snapshot)
+  #       os.system("rm -f %s/%s" % (snapshot_dir, different_snapshot))
   _download(snapshot_dir, url)
 
 def download_metastore_snapshot(config):
@@ -76,7 +76,7 @@ def _validate():
 def _create_snapshot_config(snapshot_dir, jenkins_job_url):
   return {'snapshot_dir': os.path.abspath(snapshot_dir),
           'url': jenkins_job_url,
-          'last_stable': get_last_stable_build_num(jenkins_job_url)}
+          'last_stable': ""} #get_last_stable_build_num(jenkins_job_url)}
 
 if __name__ == "__main__":
 
